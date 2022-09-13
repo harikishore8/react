@@ -12,7 +12,7 @@ class App extends Component {
     ],
   };
 
-  switchbutthandler = () => {
+  switchbuttonhandler = () => {
     console.log(this);
     alert(this.state.people[0].name);
   };
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Hello</h1>
-        <button onClick={this.switchbutthandler}>Switch name</button>
+        <button onClick={this.switchbuttonhandler}>Switch name</button>
         <Person
           name={this.state.people[0].name}
           age={this.state.people[0].age}
