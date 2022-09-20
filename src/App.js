@@ -10,6 +10,7 @@ class App extends Component {
       { name: "romu", age: 20 },
       { name: "pooja", age: 23 },
     ],
+    showpersons: true,
   };
 
   switchbutthandler = (abc) => {
@@ -34,27 +35,40 @@ class App extends Component {
     });
   };
 
+  showpersonhandler = () => {
+    const per = this.state.showpersons;
+    this.setState({ showpersons: !per });
+  };
+
   render() {
+    let rend = null;
+    if (this.state.showpersons) {
+      rend = (
+        <div>
+          <Person
+            name={this.state.people[0].name}
+            age={this.state.people[0].age}
+          />
+          <Person
+            name={this.state.people[1].name}
+            age={this.state.people[1].age}
+            // click={this.switchbutthandler.bind(this, "happy")}
+            change={this.nameChangeHandler}
+          >
+            Hobbies: f1
+          </Person>
+          <Person
+            name={this.state.people[2].name}
+            age={this.state.people[2].age}
+          />
+        </div>
+      );
+    }
     return (
       <div className="App">
         <h1>Hello</h1>
-        <button onClick={this.switchbutthandler}>Switch name</button>
-        <Person
-          name={this.state.people[0].name}
-          age={this.state.people[0].age}
-        />
-        <Person
-          name={this.state.people[1].name}
-          age={this.state.people[1].age}
-          // click={this.switchbutthandler.bind(this, "happy")}
-          change={this.nameChangeHandler}
-        >
-          Hobbies: f1
-        </Person>
-        <Person
-          name={this.state.people[2].name}
-          age={this.state.people[2].age}
-        />
+        <button onClick={this.showpersonhandler}>Switch name</button>
+        {rend}
       </div>
     );
   }
